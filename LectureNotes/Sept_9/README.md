@@ -4,6 +4,8 @@
   1. Announcements
      - VMs
        * before, e.g, steve.csun.edu | now, e.g., cit384-steve.csun.edu
+       * ssh tunnel to k200.ecs.csun.edu is now working
+
      - Power Outage
        * no UPS
        * no generator
@@ -30,7 +32,7 @@
      - review process
 
   1. HTML review
-     - HTML (HyperText Markup Language : structure, hiearchracal in nature
+     - HTML (HyperText Markup Language : structure, hierarchical in nature
      - HTML TAGS or ELEMENTS
         - html: head, body
         - ol & ul  (ordered and unorder lists)
