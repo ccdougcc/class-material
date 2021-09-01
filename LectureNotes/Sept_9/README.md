@@ -20,6 +20,7 @@
      - Safari
 
   1. git practicum
+     - Four areas of concern: Working Directory, Staging Area, Local Rep, Remote Repo
      - clone, push, pull, add, rm, checkout, fetch, status
 
   1. ssh login review
