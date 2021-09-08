@@ -18,7 +18,7 @@
 
       Hostname cit384
          Username <userid>
-         Hostname cit384-<userid>
+         Hostname cit384-<userid>.csun.edu
          ProxyJump ssh.csun.edu
       
       ```
@@ -38,8 +38,8 @@
         - Header and Body
       * HTTP payload (aka the Body)
         - It can be anything you want it to be
-        - Header specified: mimetype
-        - Payload specified: comment in payload  (<!DOCTYPE html>)
+        - Header specified: mimetype  (Content-type:)
+        - Payload specified: comment in payload  (<!DOCTYPE html>, #!)
       * XML: Extensible Markup Language is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
       * HTML: just a instance of XML
     - HTML Document  (HTML Tutorial: https://www.w3schools.com/html/default.asp)
@@ -56,6 +56,11 @@
         - Document: head, body, footer
         - List:
         - Table: 
+            * elements
+            * rows and columns
+            * name of the table
+            * name of the row
+            * name of the column
 
     - HTML Formating
       * Box Model
