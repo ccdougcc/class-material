@@ -39,7 +39,7 @@
       * HTTP payload (aka the Body)
         - It can be anything you want it to be
         - Header specified: mimetype  (Content-type:)
-        - Payload specified: comment in payload  (<!DOCTYPE html>, #!)
+        - Payload specified: comment in payload  (\<!DOCTYPE html\>, #!)
       * XML: Extensible Markup Language is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
       * HTML: just a instance of XML
     - HTML Document  (HTML Tutorial: https://www.w3schools.com/html/default.asp)
@@ -49,7 +49,7 @@
     - HTML Document Structure
       * Comments: <!--  comment string -->
       * Node, Tag, Element
-        - Empty (<br>) and (<img/> Void elements
+        - Empty (\<br\>) and (\<img/\> Void elements
       * Attributes: alt, id, class, href
 
       * Examples of Structure:
