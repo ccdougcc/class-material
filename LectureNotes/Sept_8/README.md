@@ -14,12 +14,12 @@
       Host k200
          User <userid>
          Hostname k200.ecs.csun.edu
-         ProxyJump ssh.csun.edu
+         ProxyJump <userid>@ssh.csun.edu
 
       Hostname cit384
          User <userid>
          Hostname cit384-<userid>.csun.edu
-         ProxyJump ssh.csun.edu
+         ProxyJump <userid>@ssh.csun.edu
       
       ```
     - K200 self-communication has been resolved
@@ -61,12 +61,11 @@
             * name of the table
             * name of the row
             * name of the column
-
     - HTML Formating
       * Box Model
       * Formating Elements
-        - old and new formating
-        - (bold - strong), (i - em), 
+        - (old - new) formating elements: avoid the old formating elements
+        - E.g., ( \<bold\> - \<strong\>), (\<i\> - \<em\>)
 
       * Attributes
         - e.g., "style" is an attribute
