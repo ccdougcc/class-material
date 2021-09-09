@@ -12,12 +12,12 @@
       * Suggestion: add the following to your .ssh/config file
       ```
       Host k200
-         Username <userid>
+         User <userid>
          Hostname k200.ecs.csun.edu
          ProxyJump ssh.csun.edu
 
       Hostname cit384
-         Username <userid>
+         User <userid>
          Hostname cit384-<userid>.csun.edu
          ProxyJump ssh.csun.edu
       
