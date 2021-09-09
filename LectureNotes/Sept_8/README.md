@@ -42,7 +42,8 @@
         - Payload specified: comment in payload  (\<!DOCTYPE html\>, #!)
       * XML: Extensible Markup Language is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.
       * HTML: just a instance of XML
-    - HTML Document  (HTML Tutorial: https://www.w3schools.com/html/default.asp)
+      
+  1. HTML Document  (HTML Tutorial: https://www.w3schools.com/html/default.asp)
       * HTML provides structure
       * CSS provides style
       * Javascript provides interactivity
