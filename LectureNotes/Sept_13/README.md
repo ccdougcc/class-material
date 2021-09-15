@@ -34,7 +34,6 @@
   1. Work on the lab
 
 
-
 ## Foreshadow for Wednesday
   1. Highlevel Anatomy of a Webserver
   1. Backend Modules 
