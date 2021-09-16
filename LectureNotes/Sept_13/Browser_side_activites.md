@@ -16,7 +16,7 @@
      - HTTP/1.1
      * throw away the fragment
   1. Send header
-  1. Send blank
+  1. Send blank line
   1. Send body (i.e. this is NoOp)
   1. wait
   1. read the box (Status Line, header, blankline, body)

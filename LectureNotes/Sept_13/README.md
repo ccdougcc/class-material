@@ -31,8 +31,8 @@
   1. Review current status of the project
      - bash automation script to test
   1. Pickup where we left off on Monday
-     - Morning: Finished the slides of the CIT160 review, CGI
-     - Afternoon:
+     - Morning: Finished the slides of the CIT160 review, then CGI
+     - Afternoon: Rereview of slides, and then to CGI 
   1. Client-side Activities:
      - browser, curl, socket
   1. CGI: Common Gateway Interface
@@ -45,9 +45,9 @@
         - read from the child output
         - add header information
         - send back to client
-     * Child child
+     * Child process
         - examines its environment
-        - read from stdin
+        - read from stdin (the body of the HTTP request)
         - executes it code
         - send output to stdout
            - header info
