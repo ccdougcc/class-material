@@ -4,14 +4,21 @@
   1. Pickup from last time, i.e., questions, etc.
   1. Highlevel HTTP Server.png
   1. CGI Program -- activities
-     - adminstrative steps
+     - Adminstrative steps
        - make a directory for your cgi stuff (\~/public_html/cgi-bin)
        - make the directory read and execute `chmod o+rx \~/public_html/cgi-bin`
        - craft you program (in the repo, make sure it is executable)
+         - program name needs to a a file suffix: .cgi
        - `git pull` ( In step 2 you will do a `docker run` )
 
-     - application steps
-       - consult the environment variables
+     - Application steps
+       1. Consider writing to a logfile
+       2. Consult a configuration file,  .htaccess
+       3. Consult the environment value
+       4. Optional read the HTTP request body
+       5. Emit my HTTP response header
+       6. Emit a blank line
+       7. Emit my HTTP response body - consult the environment variables
 
  
 

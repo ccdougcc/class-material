@@ -1,16 +1,17 @@
-#! /bin/bash
+#! /usr/bin/python
+
 
 # Program Name: Counter
 # Given the number N via the querystring, the program
 # outputs the values 0..N
 
-# -1. Consider writing to a logfile
-# 0. Consult a configuration file,  .htaccess
-# 1. consult the environments
-# 2. optional read the HTTP body
-# 3. emit my HTTP response header
-# 4. emit a blank line
-# 5. emit my HTTP response body
+# 1. Consider writing to a logfile
+# 2. Consult a configuration file,  .htaccess
+# 3. Consult the environments
+# 4. Optional read the HTTP request body
+# 5. Emit my HTTP response header
+# 6. Emit a blank line
+# 7. Emit my HTTP response body
 
 if [ -f ./.htaccess ] ; then
   source ./.htaccess
