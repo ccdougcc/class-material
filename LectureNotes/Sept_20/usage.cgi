@@ -7,8 +7,8 @@
 #     Optional read the HTTP request body
 #     Emit my HTTP response header
 #     Emit a blank line
-#    Emit my HTTP response body - consult the environment variables
-#  Cleanup Cod
+#     Emit my HTTP response body - consult the environment variables
+#  Cleanup Code
 
 # Startup Code
 STDIN_FILE=/tmp/input.txt
@@ -68,5 +68,5 @@ EOF
 
 
 # Cleanup Code
-#rm ${STDIN_FILE}
+rm ${STDIN_FILE}
 echo "Exiting usage.cgi program on:  $(date)" > ./usage.log
