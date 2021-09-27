@@ -1,14 +1,25 @@
 # Lecture Notes for September 22, 2021
 
  
-
 ## Agenda 22th
   1. Pickup from last time, i.e., questions, etc.
+     1. reviewed how to use the socket CLI tool
+        - used to fake-out the client side or server side
+        - done to triage, to, and to experiment
+     1. re-re-review of the CGI protocol
+        - a set of well-defined environment varibles, e.g. GATEWAY_INTERACE
+        - read the HTTP request body from (which file) stdin
+        - write any HTTP response headers to (which file) 
+        - write the HTTP response body to (which file) stout
+        - what do with the stderr file? create and send to log file
+
+
   1. Quick review
-  1. More content Generators
+  1. More Content Generators
      - asis handler
      - cgi handler
      - html handler
+
 
   1. HTTP/s Server Overview
      1. Accept Request:
@@ -25,7 +36,7 @@
      1. Read the blank line
      1. Defer reading body
 
-  1. Call in turn the input filters
+  1. Call in turn, each of the input filters
 
   1. Rewrite the URI into the filename
      - /\~steve/cgi-bin/emit-cgi-env.cgi  
@@ -58,6 +69,9 @@
 
 
 ## Content-Generator: .cgi
+     1. Fork() and rewire fds
+     1. Marshall environment variables
+     1. exec cgi program
 
 
 
