@@ -1,0 +1,42 @@
+#! /bin/bash
+
+# Program: send-as-is
+#
+HTTP_PROTOCOL="HTTP/1.1"
+DATE="$(date)"
+FILENAME=$1
+
+
+# The input file has four components
+# These components, coupled with the corresponding output, are as follows:
+#
+# 1. The first line is the status field:
+#    - modify this line to be the HTTP Response line
+#    - add two additional header fields
+#      - Server: the string that describes the server
+#      - Date: the date in which this `asis` file was requested
+#    - emit these three lines to the output
+#   
+# 2. A list of HTTP additional HTTP Response headers
+# 3. A blank line
+# 4. the HTTP response body
+#     - emit each and every line that is part of Component #2 - #4
+#
+{
+      # 1.
+      read STATUS _code _description
+      
+      # Output the HTTP Response line, and the two additional fields
+      echo ${HTTP_PROTOCOL} ${_code} ${_description}
+      echo Server: premortal/cit-384/${USER} 
+      echo Date: ${DATE}
+      
+      # 2-4.
+      # Via a loop, read each line from the file, and emit it to the output.
+      
+      while read _line ; do 
+        echo $_line
+      done 
+} < ${FILENAME}
+
+

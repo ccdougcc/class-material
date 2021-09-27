@@ -1,0 +1,72 @@
+#! /bin/bash
+
+# Program: send-as-is
+#
+HTTP_PROTOCOL="HTTP/1.1"
+DATE="$(date)"
+FILENAME=$1
+
+
+## Handle the case inwhich the file does not exist
+if [[ ! -f ${FILENAME} ]] ; then 
+
+cat <<EOF
+HTTP/1.1 400 Not found
+Server: premortal/cit-384/${USER}
+Date: ${DATE}
+
+EOF
+
+fi 
+
+
+## Handle the case in which the file does exit
+# The input file has four components
+# These components, coupled with the corresponding output, are as follows:
+#
+# 1. The status field
+#    - modify this line to be the HTTP Response line
+#    - add two additional header fields
+#    - emit these three lines to the output
+#   
+# 2. A list of HTTP response headers
+# 3. A blank line
+# 4. the HTTP response body
+#     - emit each and every line as is to the output
+#
+
+if [[ -f ${FILENAME} ]] ; then
+   { 
+      # 1.
+      read STATUS _code _description
+      
+      # Output the HTTP Response line, and the two additional fields
+      echo ${HTTP_PROTOCOL} ${_code} ${_description}
+      echo server: premortal/cit-384/${USER} 
+      echo date: ${DATE}
+      
+      # 2-4.
+      # Via a loop, read each line, and emit it to the output.
+      
+      while read _line ; do 
+        echo $_line
+      done 
+   } < ${FILENAME}
+fi 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

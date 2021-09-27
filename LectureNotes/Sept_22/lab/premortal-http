@@ -1,0 +1,109 @@
+#! /bin/bash
+
+
+####################################
+# Skeleton of a premortal web server
+#
+# We assume that we ALWAYS get good input.
+# We assume that NEVER have any errors.
+#    -- Obviously we need to  
+
+# Current Assumption
+#     HTTP_REQUEST == GET
+#
+####################################
+# Configuration Directives
+#
+# This section mimics some of the Apache Server Directives
+# 
+
+DocumentRoot="."                 # DocumentRoot .
+UserDir=public_html				       # UserDir public_html
+DirectoryIndex="index.html"      # DirectoryIndex index.html
+
+HTML_TYPE="text/html"            # AddType text/html .shtml
+
+HTML_Handler="./plain-html"      # AddHandler html-cat .html
+CGI_Handler="./cgi-script"	     # AddHandler cgi-script .cgi
+ASIS_Handler="./send-as-is"	     # AddHandler send-as-is .asis
+
+DATE="$(date)"
+
+####################################
+# In the future, include the configuration directives via a .env file.
+if [[ -f ".env" ]] ; then
+  source .env
+fi
+
+
+####################################
+# Read the HTTP Request
+# #   A. Read the Request Line
+# #   B. Read HTTP Request Fields
+# #   C. Read the blank line
+# #   D. Read Optional Body
+
+# A.
+  read REQUEST_METHOD REQUEST_URI SERVER_PROTOCOL
+
+# B. & C.
+  read field value
+  while [[ -n $field ]] ; do
+    read field value
+  done
+
+# D.
+  # Skip reading the body
+
+
+####################################
+# In turn, call each of the input filters
+# Each filter will read from stdin and write to stdout
+#
+# E.g. 
+#     cat - | in_filter_1 | in_filter_2 | in_filter_3 
+#
+
+
+####################################
+# Rewrite the URI into the filename
+# 
+# Two cases: 
+#    1. the URI begins with "/~"
+#    2. the URI does does not.
+# 
+# Here we assume that the URI does not
+
+FILENAME="${DocumentRoot}"${REQUEST_URI}
+
+if [[ -d ${FILENAME} ]] ; then
+   FILENAME=${FILENAME}/${DirectoryIndex}
+fi
+
+if [[ ! -f ${FILENAME} ]] ; then 
+  
+  cat <<EOF
+HTTP/1.1 400 Not found
+Server: premortal/cit-384/${USER}
+Date: ${DATE}
+
+EOF
+
+fi
+
+if [[ -f ${FILENAME} ]] ; then
+  case ${FILENAME} in 
+
+     *.html )
+         ${HTML_Handler} ${FILENAME}
+         ;;
+
+     *.asis )
+         ${ASIS_Handler} ${FILENAME}
+         ;;
+
+     *.cgi )
+         ${CGI_Handler} ${FILENAME}
+  esac
+fi
+
