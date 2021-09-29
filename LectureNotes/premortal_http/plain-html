@@ -1,0 +1,18 @@
+#! /bin/bash
+
+# Program: html-cat
+# Usage: html-cat filename.html
+
+FILENAME="$1"
+
+DATE="$(date)"
+CONTENT_SIZE=$(stat -f "%z" $FILENAME)
+HTML_TYPE="text/html"  
+
+echo HTTP/1.1 200 Okay
+echo Server: premortal/cit-384/${USER} 
+echo Date: ${DATE}
+echo Content-type: ${HTML_TYPE}
+echo Content-length: ${CONTENT_SIZE}
+echo ""
+cat ${FILENAME}

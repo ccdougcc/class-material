@@ -26,6 +26,7 @@ HTML_TYPE="text/html"            # AddType text/html .shtml
 HTML_Handler="./plain-html"      # AddHandler html-cat .html
 CGI_Handler="./cgi-script"	     # AddHandler cgi-script .cgi
 ASIS_Handler="./send-as-is"	     # AddHandler send-as-is .asis
+X_HTML_Handler="./x-html"        # AddHandler x-html  .x-html
 
 DATE="$(date)"
 
@@ -104,6 +105,11 @@ if [[ -f ${FILENAME} ]] ; then
 
      *.cgi )
          ${CGI_Handler} ${FILENAME}
+         ;;
+
+     *.x-html
+        ${X_HTML_Handler} ${FILENAME}
+         ;;
   esac
 fi
 
