@@ -1,0 +1,77 @@
+#! /bin/bash
+
+# Current Usage: cit384-url hostname port URI
+# Future Usage:  cit384-url url
+
+
+# process_body is a flag that tells me to process the body
+process_body=FALSE
+
+
+# Parser the URL:
+#   Current Assumption
+#    1. scheme is http
+#    1. userinfo: anonymous
+#    1. server_name
+SERVER_NAME=$1
+#    1. TCP_Port
+PORT=$2
+#    1. Path
+#    1. Query
+#    Path + Query == URI
+URI=$3
+#    1. Fragment
+
+# Build the Request Payload
+#
+cat <<EOF >/tmp/request
+GET ${URI} HTTP/1.1
+host: ${SERVER_NAME}
+
+EOF
+
+
+# Establish a Socket 
+# Send Request
+# Receive Payload
+socket ${SERVER_NAME} ${PORT}  < /tmp/request  >/tmp/payload
+
+
+cat /tmp/payload | while read name value ; do
+   if [[ $name == "Content-type:" ]] ; then 
+     if [[ $value == "application/x-html" ]] ; then
+       process_body=TRUE
+     fi
+   fi
+done
+
+cat /tmp/payload | {
+	read name value ;
+	while [ -n $name ] ; do
+	  read name value
+	done
+    # Found my blank line...
+
+    while read line ; do 
+       echo $line
+    done
+} >/tmp/body
+
+
+
+#  -------------------------------------
+
+     
+# Based upon Content-type: do something: in this case
+if [[ $process_body == FALSE ]] ; then 
+  : 
+else
+   base64 -d | uncompress
+fi < /tmp/body
+
+
+
+
+
+
+
