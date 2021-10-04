@@ -10,6 +10,8 @@
      - (M) Content-generator for .x-html, more clarification
        - do we need to modify the headers --- yes, potentially
        - do we need to modify the body -- yes, potentially.
+     - (A) How does send-as-is and plain-html fit into the overall architecture?
+
 
 
   1. Last time:
