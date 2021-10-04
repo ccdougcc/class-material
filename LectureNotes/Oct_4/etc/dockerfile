@@ -1,1 +1,22 @@
-../dockerfile.cit160
+FROM ubuntu:20.04
+
+RUN rm /etc/dpkg/dpkg.cfg.d/excludes
+
+RUN apt-get update && \
+    dpkg -l | grep ^ii | cut -d' ' -f3 | xargs apt-get install -y --reinstall && \
+        rm -r /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y \
+    apt-utils
+
+# Install the man pages
+RUN apt-get update && apt-get install -y \
+    man-db
+
+# Install base operations
+RUN apt-get update && apt-get update && apt-get install -y \
+     openssh-client wget
+
+# Cleaning up
+RUN apt-get clean && apt-get autoremove
+
