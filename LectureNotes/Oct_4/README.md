@@ -4,6 +4,10 @@
      * Explain what happens when a user types following into their browser:
        - https://www.domain.com/path/to/document?var=value;var=value#section
 
+    * Explain what happends when an SRE executes the following command:
+         - ``docker run --name inclass hello-world``
+
+    * Explain what is the difference between a container and a VM (virtual machine)?
 
 ## Agenda 4th
   1. Questions:
@@ -11,6 +15,9 @@
        - devs need to find a work around to copy files
        - ops need to figure out what is wrong and how to fix it
          - root cause of the problem is associated with the LDAP directory -- authentication service
+     - Why did facebook go down today?
+       - don't know...
+       - iot (internet of things)
 
   1. Last time:
      - Reviewed the process by which a http request is made and serviced
@@ -25,8 +32,9 @@
      - Interview Questions:
        * Explain what happends when an SRE executes the following command:
          - ``docker run --name inclass hello-world``
+
      - Docker
-       1. Methodology for Deploymet
+       1. Methodology for Deployment
        2. Images and Containers
           - docker ps: list of all of the active *containers*
           - docker ps -a: list of all of the *containers*
