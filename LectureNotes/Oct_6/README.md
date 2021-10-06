@@ -32,7 +32,7 @@
       1. Compare : #3
          - ``docker build git@github.com:<url-path>`` 
          - Current working directory is: the top-level directory at ``git@github.com:<url-path>``
-   1. tunneling to the cit384-  does not work well
+   1. tunneling to the cit384-${USER}  does not work well
    1. issues with scp on the command
       - ``scp <CSUN-UID>@ssh.sandbox.csun.edu:\~steve/cit160/etc/dockerfile dockerfile``
    1. https (i.e., TLS) ... not mandatory at this time ...
