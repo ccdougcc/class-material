@@ -40,8 +40,11 @@
 
 ## Docker Compose
    1. What does it do?
+      - allows you to spin-up multiple containers with associated networking and volumes in one configuration/automation process
+      - built on top of docker
+        - config file for docker-composer is simpler (Steve's opinion. )
 
-   
+
    1. What's the big deal?
 
 
