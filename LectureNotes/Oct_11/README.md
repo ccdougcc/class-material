@@ -9,7 +9,26 @@
       - IT professionals need to be prepared to triage, to understand, and to fix and to engineer around such things
 
 ### Issues encountered and steps to rectify the issue
-    1. 
+    1. .env variables were not instantiated via docker-compose
+       - database error:  error: access denied and it showed a sql statement
+       - logged into sql server, as root
+       - did not root access... 
+       - internet searches on how to reset the root password
+       - logged in.
+       - internet searches on how to display the set database: ``show databases``
+       - ``show databases``
+          - mysql
+          - informational ...
+          - \<something else\>
+          - ${PROJECT_DB_NAME}
+       - went into dockerfile, manually updated the Project_DB_NAME  (and the others)
+       - removed everything
+       - rebuilt everything
+       - tested
+       - asked a colleague to do the same, and partially waited for their result
+       - posted to slack and asked for more forward
+         - The feedback I got was: It didn't work for me!
+     ---
 
 
 ## Moving Forward
@@ -46,19 +65,34 @@
       - common packages that can be incorporated into a site.
 
    1. Sites (vhosts)
-      - named based:     \<VituralHost cit384-steve:80\>
-      - ip based:        \<VituralHost 130.166.2.32:443\>
-      - wildcard based:  \<VituralHost 130.166.2.32:443\>
+      - named based:     \<VirturalHost cit384-steve:80\>   ..stuff..  \</VirtualHost\>
+      - ip based:        \<VirturalHost 130.166.2.32:443\>
+      - wildcard based:  \<VirturalHost \*:443\>  \<VirturalHost \*:\*\> 
+      * SSL Issues
+
+         ```
+         GET /uri/path/to/the/index.html HTTP/1.1
+         host: cit384-steve
+
+         ```
+         1. make socket connection between the client and the server
+         2. establish TLS/SSL (if appropriate): when the scheme is https
+         3. send/received the request
+         4. check the IP address, the IP port, and the host attribute
+         5. select the correct vhost
 
 ## URL --> FileSystem Mapping
+   * scheme: // authority:password@ hostname /path/to/file/to/execute.php/extra/path/stuff  ?args&args  #fragment
+   * location: /path/to/file/to/execute.php
+
    1. DocumentRoot
-   1. DirectoryIndex
    1. Alias
    1. Proxy (for Reverse Proxy-ing)
    1. Redirect
    1. Rewrite
    1. ScriptAlias
-   1. UserDir
+   1. UserDir public_html:   ~steve/public_html
+   1. DirectoryIndex
    ---
    1. ErrorDocument
 
@@ -74,7 +108,7 @@
    1. .htaccess
 
 ## Lab for today
-   1. Reexamine your last lab
+   1. Reexamine your containerized-website lab
    1. Modify your configuration to include the UserDir and DirectoryIndex
    1. Modify your resume-site container (via the dockerfile) to
       1. Add yourself as a user -- driven via the $USER environment value
