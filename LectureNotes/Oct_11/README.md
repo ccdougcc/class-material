@@ -9,28 +9,33 @@
       - IT professionals need to be prepared to triage, to understand, and to fix and to engineer around such things
 
 ### Issues encountered and steps to rectify the issue
-    1. .env variables were not instantiated via docker-compose
-       - database error:  error: access denied and it showed a sql statement
-       - logged into sql server, as root
-       - did not root access... 
-       - internet searches on how to reset the root password
-       - logged in.
-       - internet searches on how to display the set database: ``show databases``
-       - ``show databases``
-          - mysql
-          - informational ...
-          - \<something else\>
-          - ${PROJECT_DB_NAME}
-       - went into dockerfile, manually updated the Project_DB_NAME  (and the others)
-       - removed everything
-       - rebuilt everything
-       - tested
-       - asked a colleague to do the same, and partially waited for their result
-       - posted to slack and asked for more forward
-         - The feedback I got was: It didn't work for me!
+   1. Access Denied....
+      ```
+      $ docker-compose
+      access denied, tables, password SQL calstatepays@172.18.0.5
+      ```
+      - log into the db container: docker exec -it container-name bash
+      - log into the mysql database: mysql -u calstate -p
+      - logged into sql server, as root
+      - did not root access... 
+      - internet searches on how to reset the root password
+      - logged in.
+      - internet searches on how to display the set database: ``show databases``
+      - ``show databases``
+         - mysql
+         - informational ...
+         - \<something else\>
+         - ${DB_NAME}
+      - went into dockerfile, manually updated the Project_DB_NAME  (and the others)
+      - removed everything
+      - rebuilt everything
+      - tested
+      - asked a colleague to do the same, and partially waited for their result
+      - posted to slack and asked for more forward
+        - The feedback I got was: It didn't work for me!
      ---
 
-
+ 
 ## Moving Forward
 
 ## Apache Architecture
@@ -65,9 +70,9 @@
       - common packages that can be incorporated into a site.
 
    1. Sites (vhosts)
-      - named based:     \<VirturalHost cit384-steve:80\>   ..stuff..  \</VirtualHost\>
-      - ip based:        \<VirturalHost 130.166.2.32:443\>
-      - wildcard based:  \<VirturalHost \*:443\>  \<VirturalHost \*:\*\> 
+      - named based:     \<VirtualHost cit384-steve:80\>   ..stuff..  \</VirtualHost\>
+      - ip based:        \<VirtualHost 130.166.2.32:443\>
+      - wildcard based:  \<VirtualHost \*:443\>  \<VirturalHost \*:\*\> 
       * SSL Issues
 
          ```
@@ -82,17 +87,18 @@
          5. select the correct vhost
 
 ## URL --> FileSystem Mapping
-   * scheme: // authority:password@ hostname /path/to/file/to/execute.php/extra/path/stuff  ?args&args  #fragment
+   * scheme: // authority:password@ hostname /~path/to/file/to/execute.php/extra/path/stuff/  ?args&args  #fragment
    * location: /path/to/file/to/execute.php
 
-   1. DocumentRoot
-   1. Alias
+   1. DocumentRoot  /var/www
+   1. Alias   /path/to  /tmp/my/web/
    1. Proxy (for Reverse Proxy-ing)
    1. Redirect
    1. Rewrite
    1. ScriptAlias
-   1. UserDir public_html:   ~steve/public_html
-   1. DirectoryIndex
+   1. UserDir disable root
+   1. UserDir public_html:  ~path/public_html
+   1. DirectoryIndex index.php index.html 
    ---
    1. ErrorDocument
 
@@ -113,6 +119,7 @@
    1. Modify your resume-site container (via the dockerfile) to
       1. Add yourself as a user -- driven via the $USER environment value
       1. Copy your resume site to the correct location in the container
+   1. curl http://localhost:$port/\~steve/
 
 
 ### Resources of note:
