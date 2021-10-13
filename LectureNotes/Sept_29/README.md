@@ -1,8 +1,8 @@
 # Lecture Notes for September 27, 2021
 
 ## Interview Question:
-     * Explain what happens when a user types following into their browser:
-       - https://www.domain.com/path/to/document?var=value;var=value#section
+  * Explain what happens when a user types following into their browser:
+    - https://www.domain.com/path/to/document?var=value;var=value#section
 
 
 ## Agenda 29th
