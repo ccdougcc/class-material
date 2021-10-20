@@ -129,7 +129,7 @@
   1. A free book on [Sed and Awk](https://learning.oreilly.com/library/view/sed-awk/1565922255/)
 
 ### Simple Sed example
-  1. ``sed 's/#UserDir/UserDir' httpd.conf >new_http.conf``
+  1. ``sed 's/#UserDir/UserDir/' httpd.conf >new_http.conf``
      - removes the comment character within your httpd.conf on http container
      - this is one approach to enabling the UserDir directive on your http container
 
