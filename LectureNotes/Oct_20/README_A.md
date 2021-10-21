@@ -6,58 +6,54 @@
 
 ## Regular Expression
    1. Machines and Languages
-      1. Boolean Algebra & Computational Circuits
-      1. Regular Expressions & Finite State Machine 
-      1. Context Free Language & Push-down Automate (PDA)
-      1. Context Sensitive Languages  & Limited bounded Automate
-      1. Recursively Enumerable Language & Turing Machine
-         - Universal Computer
-           - Tape --> Memory
-           - Store the control program, the program, and the input/output
-
+      - Combinational Circuits -- Boolean Algerbra
+      - Finite State Machine -- Regular Language (Regular Expressions)
+      - PDA (Pushdown Automata) -- Context Free Langague (BNF)
+      - Limited Bounded Automata -- Context Sensitve Language 
+      - Turing machine --- Recursively Enumerable Language
+         - Univeral Computer:
+           1. limited tape equivalent to main memory
+           1. the control program is placed into main memory
+           1. the program is placed into main memory
+           1. the input & out is placed into main memory
    1. Regular Languages and Regular Expressions
-      1. Regular Language Example
-        ```
-        P -> c P
-          | c      
-        ```
-      1. Derivation for the string "ccc" : P => c P => c c P => c c c
-
-      1. Corresponding Regular Expression
-        ```
-        c*
+      - Regular Language:
+      ```
+        P -> p P
+           | a
       
-        ```
-   
+      ```
+      - Derivation:  P => p P => p p P => p p p P => p .... p P => p p ... p a
+      - Regular Expression : p* a
 
    1. Practical Syntax of Regular Expressions
-      - the shell... globbing
-      ```
-        Bash itself cannot recognize Regular Expressions. Inside scripts, it is commands and utilities -- such as sed and awk -- that interpret RE's.
-      ```
-      - basic regular expressions
-        - also known as obsolete
-        - used, for example, by grep
-          - Global Regular Expression Print
-      - POSIX or extended regular expressions
-        - used by egrep
-      - Perl regular expressions
-        - more syntax sugar
-        - used by Apache in rewrite rules
+      - the shell... globbing...
+      - basic regular expression, grep 
+        - global reg expression print: sed '/re/pg'
+        - obsolete regular expresion
+      - POSIX or extended regular expression
+        - used by egrep 
+      - Perl regular expressions  
+        - lots of syntatic sugar
+        - used by Apache in rewrite rules 
+
 
 ## Searching for Stuff
+  - regular expression for a date :  i.e., what's is format/syntax
+    -  mm/dd/yyyy
+    -  yyyy/mm/dd
+    -  ss/mm/yyy
+    - ( 0 | 1)( 0 | 1 | 2| 3 | 4 | 5 | 6 |7 |8 |9 ) "/"
+    - ``[01][0-9]"/"[0123][0-9]"/"[0-9]{4}``
+    = \d\d"/""\d\d"/"\d{4}"
 
 ## Apache Logging
-   - LogFormat
-   ```
-     LogFormat "%f %h %m"
-   
-   ```
-   - Sample Access Log 
-
-## Simple patterns
-  - Month dd, yyyy
-  >> - yyyy/mm/dd    :   [0-9]{4}"(/|-)"[0-9]{2}"(/|-)"[0-9]{2}
+  - AccessLog
+  ```
+    LogFormat
+    CustomLog
+  
+  ```
 
 
 ## Regular Expressions... Kleene's theory...
@@ -69,54 +65,45 @@
   - regex * is regex  (regex any number of times.)
 
 
-## RegEx examples
-  - 5 a's followed by a "bc"
-    - aaaaabc
-  - at least 5 's followed be a "bc" and then at least 2 a's
-    - aaaaa a* bc aa a*
-  - even number of a's followed by "bc" and then followed be an odd number of a's
-    - ``(aa)* bc (aa)*a``
-  - this : [0-9]{4}"(/|-)"[0-9]{2}"(/|-)"[0-9]{2}
-    (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 )    (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 )    (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 )    (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ) ( / | - )    (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 )    (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ) ( / | - )     (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 )     (0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 )
+## Extra metacharacters
+   - . : any character (except for \n )
+   - ^ : beginning of the line
+   - $ : end of the line
 
-### Syntax Sugar (Choice)
-  - [0-9]  [[:digit:]] \d
-  - [a-zA-Z] [[:alpha]:] 
+## Syntax Sugar: Choice
+  - [0-9]       [[:digit:]]  \d
+  - [a-zA-Z]    [[:alpha]:] 
   - [a-zA-Z0-9] [[:alnum:]]  \w 
-  - [ \t\v\f]  [[:space:]]  \s  
-  - [^0-9]  [^[:digit:]] \D
-  - [^a-zA-Z] [^[:alpha]:] 
-  - [^a-zA-Z0-9] [^[:alnum:]]  \W 
-  - [^ \t\v\f]  [^[:space:]]  \S
+  - [ \t\v\f]   [[:space:]]  \s  
+  - [^0-9]      [^[:digit:]] \D
+  - [^a-zA-Z]   [^[:alpha]:] 
+  - [^a-zA-Z0-9][^[:alnum:]] \W 
+  - [^ \t\v\f]  [^[:space:]] \S
 
-### Example
-  -   - this : [0-9]{4}"(/|-)"[0-9]{2}"(/|-)"[0-9]{2}
-  - \d\d\d\d ("/"| "-" ) \d\d ("/"| "-" ) \d\d
+ 
 
 ### Syntax Sugar (Repetition)
+  1. (regexp){0,1} == ? : at most 1, it is either choice or don't choice it.
   1. Greedy
      - (regex){n,m}: at least "n" but not more than "m"
      - (regex){n}  : exactly "n" regex
      - (regex){n,} : at least "n"
      - (regex){,m} : at most "m"
-  1. NonGready (polite)
-     - regex * == (regex){0,}? : zero or more
-     - regex + == (regex)(regex)* == (regex){1,}? : one or more 
-  1. Non Greedy with {}
-     - ``(regex){0,} == (regex)*+``
-     - ``(regex){1,} == (regex)++``
+  1. Non-Greedy (Polite)
+     - regex * == (regex){0,}?
+     - regex + == (regex){1,}?
+  1. Gready Equivalence
+     - ``(regex){0,} ==  regex *+`` 
+     - ``(regex){1,} ==  regex ++``
 
+### Modifies (perl)
+  (?i)acess.log((.\d*)(\.gz)?)?
 
-### Example of Greedy and not greedy
-   1. ``AliasMatch "^/image/(.*)\.jpg$" "/files/jpg.images/$1.jpg" ``
-      - URI: /image/abcd...abc.jpg   -- this matches 
-
-   1. ``AliasMatch "^/image/.{0,}\.jpg$" "/files/jpg.images/$1.jpg" ``
-      - URI: /image/abcd...abc.jpg   -- does not match --- because its greedy!
-
-### Modifiers for greediness
-   - ? : hmm, do you need this regex later on?  make it polite
-   - + : take more... make it greedy
+### Example of Greediness
+  1. ``AliasMatch "/image/(.*)\.jpg$" "/files/jpg.images/$1.jpg" ``
+      - URI: /image/abcd...abc.jpg    -- Match!
+   1. ``AliasMatch "/image/(.{0,})\.jpg$" "/files/jpg.images/$1.jpg" ``
+      - URI: /image/abcd...abc.jpg    -- does not Match
 
 ### KISS
 
@@ -125,8 +112,11 @@
   1. The prof highly/strong/emphatically recommends that 
     - you learn regular expressions, and
     - the tools that exploit their power
+
   1. A free book about [Regular Expressions](https://learning.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/)
+
   1. A free book on [Sed and Awk](https://learning.oreilly.com/library/view/sed-awk/1565922255/)
+  1. https://regex101.com
 
 ### Simple Sed example
   1. ``sed 's/#UserDir/UserDir/' httpd.conf >new_http.conf``
