@@ -1,6 +1,6 @@
 # Lecture October 25, 2021
 
-## Announcements:
+## Notes:
    - (A) Cleanup on Limit and Auth for .htaccess
    - (M) Cleanup on Conditional Includes
 
@@ -19,7 +19,7 @@
       - If polite, and if you want to be greed, then grab _more_
         - that is append the notation with a "+"
    - Syntax Sugar 
-     - choice:  ( a | b | c) -> [abc]
+     - choice:  ( a | b | c ) -> [abc]
      - repetition: aa* == a+ ->  (reg_expr){lower_limit, upper_limit}
        - a* == a{0,}
 
@@ -85,20 +85,21 @@
        </virtualhost>
        ```
      - Location
-       - ```<Location "/promotions" >
-               Alias /promotions /usr/home/anthony/public_html
-               directive2
-             </Location>
-          ```
+       ```<Location "/promotions" >
+            Alias /promotions /usr/home/anthony/public_html
+            directive2
+          </Location>
+      ```
      - Directory, and
-       - ```<Directory "/user/home/steve/public_html/cit384.2/" >
-               DirectoryIndex cit384.1.html
-               directive2
-               <Files "*.txt" >
-                 SetHandler  blah
-               </Files>
-             </Directory>
-          ```
+       ```
+          <Directory "/user/home/steve/public_html/cit384.2/" >
+             DirectoryIndex cit384.1.html
+             directive2
+             <Files "*.txt" >
+               SetHandler  blah
+             </Files>
+         </Directory>
+      ```
 
 ### .htaccess
    * https://httpd.apache.org/docs/2.4/howto/htaccess.html
