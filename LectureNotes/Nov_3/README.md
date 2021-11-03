@@ -17,3 +17,6 @@
    1. Material removed from the lab:
       - https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html
 
+   1. man curl
+      - curl -H "Host: site1" http://locahost:8080/
+      
