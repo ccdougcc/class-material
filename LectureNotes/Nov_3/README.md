@@ -14,9 +14,18 @@
       - https://github.com/CIT384/additional_apache_configs
    1. vhost (``<VirtualHost>``): https://httpd.apache.org/docs/2.4/vhosts/examples.html
    1. htaccess: https://httpd.apache.org/docs/2.4/howto/htaccess.html
+      - $ htpasswd
+      - .htaccess
+         - require valid-user
+         - 
    1. Material removed from the lab:
       - https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html
 
    1. man curl
-      - curl -H "Host: site1" http://locahost:8080/
-      
+      - curl -H "Host: site1" http://localhost:8080/
+      - vi /etc/hosts
+        - 127.0.0.1 site1
+        - 127.0.0.1 site2
+        - 127.0.0.1 site3
+        - then you can do
+           - $ curl http://site1:8080/blah
