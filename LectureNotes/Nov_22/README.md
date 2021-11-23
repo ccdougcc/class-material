@@ -11,6 +11,11 @@
        - create a CSR for your website using openSSL
        - sign the CSR to create a self-signed certificate
      * Install the necessary Certificate information into your github repo
+       - add the following X files:
+         * CSR
+         * Key file  <----
+         * Certificate
+         * CA's Certificate
        - ponder the security implications of such an approach
      * Create a new index.html (or repurpose one)
      * Create a dockerfile to
@@ -21,12 +26,20 @@
          * ensure all http traffic is redirected to https
     * Install the Certificate information to the appropriate location
 
+  1. testing tools I could use:
+     ( http://site1.internal:8080)
+     - ping .... to see if the instance is running
+     - netstat   to see if the right ports are open  ---
+     - socket localhost 8080, socket locahost 8443..  to see if the right ports are open 
+     - curl http: , look for the "Location:"
+     - openssl s_client
+
   1. Enhancements
     - Examine the various Ciphers and strength you security Stance
     - Trigger which index.html page gets render based upon the SSLProtocol
     - Use a .htaccess file to force the HTTPS requirement (in addition to)
     - Build a process by which you can after-the-fact install the SSL certs.
-      * docker compose, installs the webserver from point A, and then instalss the certs from point B
+      * docker compose, installs the webserver from point A, and then install the certs from point B
       * run a probram within the web server to pull the cert from somewhere
       * run a program against the web server to push the cert into the server
     - Codify the above to run each and every year
@@ -151,7 +164,7 @@
       - CSR (Certificate Request)
 
    1. OpenSSL Certificate Generation
-      - https://certbot.eff.org ?
+      - https://certbot.eff.org 
       - Create CSR: 
         * openssl req -new -newkey rsa:2048 -nodes -keyout key_file
       - Store key_file and CSR file
