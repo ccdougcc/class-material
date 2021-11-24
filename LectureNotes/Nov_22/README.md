@@ -26,8 +26,7 @@
          * ensure all http traffic is redirected to https
     * Install the Certificate information to the appropriate location
 
-  1. testing tools I could use:
-     ( http://site1.internal:8080)
+  1. testing tools I could use: (for testing http://site1.internal:8080)
      - ping .... to see if the instance is running
      - netstat   to see if the right ports are open  ---
      - socket localhost 8080, socket locahost 8443..  to see if the right ports are open 
@@ -53,7 +52,7 @@
   1. The third -- Access, Auditing, Accounting, and A..
 
 
-# Review Information (I.e., notes from the last lecture)
+# Review Information (I.e., notes from the last lectureenable)
   1. Server Certificate 
      - purpose
      - examine from a browser
